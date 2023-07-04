@@ -5,7 +5,7 @@ def sma(n, prices):
     n : number of days to calculate sma over
     prices: data list of security prices
     """
-    sum = 0
+    sum = 0.0
     
     i = 0
     for price in reversed(prices):
@@ -13,9 +13,9 @@ def sma(n, prices):
         sum += price
         i += 1
             
-        if i >= n:
+        if i > n:
             break
-            
+        
     return sum / n
     
 def ema(n, prices):
@@ -28,7 +28,7 @@ def ema(n, prices):
 
     s = 2 / (n + 1)
     t = reversed(prices[0])
-    ema = 0
+    ema = 0.0
 
     if n > 1:
         ema += (t * s) + (ema(n - 1, prices[:-1]))
