@@ -35,14 +35,31 @@ def ema(n, prices):
     n : number of days to calculate sma over
     prices: data list of security prices
     """
+    # DEBUG
+    print('length of prices: ', len(prices))
 
-    s = 2.0 / (n + 1.0)
-    t = reversed(prices[0])
-    ema = 0.0
-
-    if n > 1:
-        ema += (t * s) + (ema(n - 1, prices[:-1]))
-    else:
-        return sma(n, prices)
+    # Error Checking: greater period than prices or negative period
+    if n > len(prices) or n < 0:
+        return -1.0
     
-    return ema
+    s = 2.0 / (n + 1.0)
+    t = prices[-1]
+    temp_ema = 0.0
+
+    # TODO: Figure out how to check for negative prices recursively
+
+    # DEBUg
+    print('s: ', s)
+
+    # TODO: Change ema calculation to depend on a different var or be iterative
+    # Compute EMA
+    if n > 1:
+        temp_ema += (t * s) + (ema(n, prices[:-1]))
+    else:
+        # DEBUG
+        print('t (else): ', t)
+        return sma(n, prices)
+    # DEBUG
+    print('t: ', t)
+    print('Temp EMA: ', temp_ema)
+    return temp_ema
