@@ -28,7 +28,7 @@ class TestMovingAverages(unittest.TestCase):
         self.assertEqual(1.0, moving_averages.ema(1.0, [1.0]))
         # Multiple values, Multiple day period
         #self.assertTrue((abs(8.324 - moving_averages.ema(9.0, [2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0, 16.0, 18.0, 20.0]))) <= 0.01)
-        self.assertTrue((abs(4.0 - moving_averages.ema(2.0, [2.0, 4.0]))) <= 0.01)
+        self.assertTrue((abs(3.333 - moving_averages.ema(2.0, [2.0, 4.0]))) <= 0.01)
 
         #### Invalid ####
         # Invalid: Single value, multiple day period

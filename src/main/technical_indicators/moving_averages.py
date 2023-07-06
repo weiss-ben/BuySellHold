@@ -49,9 +49,7 @@ def ema(n, prices):
     # TODO: Change ema calculation to depend on a different var or be iterative
     # Compute EMA
     if n > 1:
-        temp = ema_helper(alpha, prices)
-        print('temp: ', temp)
-        return temp # ema_helper(alpha, prices)
+        return ema_helper(alpha, prices)
     else:
         return sma(n, prices)
 
