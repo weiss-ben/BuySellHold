@@ -42,24 +42,22 @@ def ema(n, prices):
     if n > len(prices) or n < 0:
         return -1.0
     
-    s = 2.0 / (n + 1.0)
-    t = prices[-1]
-    temp_ema = 0.0
+    alpha = 2.0 / (n + 1.0)
 
     # TODO: Figure out how to check for negative prices recursively
-
-    # DEBUg
-    print('s: ', s)
 
     # TODO: Change ema calculation to depend on a different var or be iterative
     # Compute EMA
     if n > 1:
-        temp_ema += (t * s) + (ema(n, prices[:-1]))
+        temp = ema_helper(alpha, prices)
+        print('temp: ', temp)
+        return temp # ema_helper(alpha, prices)
     else:
-        # DEBUG
-        print('t (else): ', t)
         return sma(n, prices)
-    # DEBUG
-    print('t: ', t)
-    print('Temp EMA: ', temp_ema)
-    return temp_ema
+
+def ema_helper(alpha, prices):
+        # Base Case
+        if len(prices) <= 1:
+            return sma(len(prices), prices)
+        else:
+            return ((prices[-1] - prices[-2]) * alpha + ema_helper(alpha, prices[:-1]))
