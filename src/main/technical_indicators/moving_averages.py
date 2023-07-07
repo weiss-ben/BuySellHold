@@ -32,7 +32,7 @@ def ema(n, prices):
     """
     Exponential Moving Average (EMA)
 
-    n : number of days to calculate sma over
+    n: number of days to calculate sma over
     prices: data list of security prices
     """
     # DEBUG
@@ -45,8 +45,6 @@ def ema(n, prices):
     alpha = 2.0 / (n + 1.0)
 
     # TODO: Figure out how to check for negative prices recursively
-
-    # TODO: Change ema calculation to depend on a different var or be iterative
     # Compute EMA
     if n > 1:
         return ema_helper(alpha, prices)
@@ -54,6 +52,12 @@ def ema(n, prices):
         return sma(n, prices)
 
 def ema_helper(alpha, prices):
+        '''
+        Helper for EMA calculation, handles recursive calculation
+
+        alpha: smoothing/weighting factor
+        prices: price list
+        '''
         # Base Case
         if len(prices) <= 1:
             return sma(len(prices), prices)
