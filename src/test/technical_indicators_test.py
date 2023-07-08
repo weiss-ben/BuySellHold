@@ -1,5 +1,5 @@
 import unittest
-from ..main.technical_indicators import moving_averages
+from technical_indicators import moving_averages
 
 class TestMovingAverages(unittest.TestCase):
 
