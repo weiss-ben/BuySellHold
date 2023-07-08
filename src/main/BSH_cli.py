@@ -14,18 +14,18 @@ def display_menu(type):
         print('2. Quit')
 
         # prompt for input
-        print('\nEnter a number to make a choice...')
+        #print('\nEnter a number to make a choice...')
 
 def get_input(type):
     if type == "menu option":
         # accept menu input (always a number)
-        return int("")
+        return int(input("Enter a menu option: "))
     elif type == "ticker":
         # accept ticker; always a string
-        return ""
+        return input("Enter a valid ticker symbol: ")
     else:
         # Do sometihng else; throw an error?
-        return ""
+        return "NA"
 
 def process_input(user_input):
     if type(user_input) is int:
@@ -34,6 +34,7 @@ def process_input(user_input):
         # process ticker input
     else:
         # Do something else; throw an error?
+
 # Display welcome message
 print('Welcome to Buy Sell Hold!')
 
