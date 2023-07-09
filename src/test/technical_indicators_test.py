@@ -7,9 +7,11 @@ class TestMovingAverages(unittest.TestCase):
     def test_sma(self):
         #### Valid ###
         # Single value, single day
-        self.assertEqual([1.0], moving_averages.sma(1, [1.0]))
+        sma_vc_01 = moving_averages.sma(1, [1.0])
+        sma_ve_01 = [1.0]
         # Multiple values, multiple days
-        self.assertTrue((abs(12.222 - moving_averages.sma(9, [2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0, 16.0, 18.0, 20.0]))) <= 0.01)
+        sma_vc_02 = moving_averages.sma(10, [2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0, 16.0, 18.0, 20.0])
+        sma_ve_02 = [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0]
 
         #### In-valid ####
         # Invalid: Single Value, Multiple days
