@@ -9,10 +9,14 @@ def sma(n, prices):
     if n > len(prices) or n < 0:
         return -1.0
     
+    # Copy only relevant # of prices from price list
+    price_window = prices[(n - 1):]
+
     sum = 0.0
-    
+    result = []
+
     i = 0
-    for price in reversed(prices):
+    for price in price_window:
         # Error checking: negative prices
         if price < 0.0:
             return -1
@@ -20,13 +24,12 @@ def sma(n, prices):
         # Sum the prices for the specified number of days
         sum += price
         i += 1
-            
-        # Count back n days
-        if i > n:
-            break
 
-    # Compute avg
-    return sum / n
+        # Compute average and place in list
+        avg = sum / i
+        result.append(avg)
+        
+    return result
     
 def ema(n, prices):
     """
@@ -35,18 +38,19 @@ def ema(n, prices):
     n: number of days to calculate sma over
     prices: data list of security prices
     """
-    # DEBUG
-    print('length of prices: ', len(prices))
 
     # Error Checking: greater period than prices or negative period
     if n > len(prices) or n < 0:
         return -1.0
     
+    # Copy only requested window of prices
+    price_window = prices[n:]
+
     alpha = 2.0 / (n + 1.0)
 
-    # TODO: Figure out how to check for negative prices recursively
     # Compute EMA
     if n > 1:
+        print(ema_helper(alpha, prices))
         return ema_helper(alpha, prices)
     else:
         return sma(n, prices)
