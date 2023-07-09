@@ -10,7 +10,8 @@ def sma(n, prices):
         return -1.0
     
     # Copy only relevant # of prices from price list
-    price_window = prices[(n - 1):]
+    #price_window = prices[(n - 1):]
+    price_window = prices[-n:]
 
     sum = 0.0
     result = []
@@ -28,7 +29,7 @@ def sma(n, prices):
         # Compute average and place in list
         avg = sum / i
         result.append(avg)
-        
+
     return result
     
 def ema(n, prices):
@@ -44,7 +45,7 @@ def ema(n, prices):
         return -1.0
     
     # Copy only requested window of prices
-    price_window = prices[n:]
+    price_window = prices[(n - 1):]
 
     alpha = 2.0 / (n + 1.0)
 

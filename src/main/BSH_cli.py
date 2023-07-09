@@ -7,6 +7,7 @@ Displays a menu depending on type
 
 type: The type of menu to display (main, ticker, strategy choosing)
 '''
+'''
 def display_menu(type):
     if type == "main":
         # Display Menu
@@ -20,6 +21,7 @@ def display_menu(type):
 
         # prompt for input
         #print('\nEnter a number to make a choice...')
+'''
 
 '''
 Prompts the user for menu input and returns appropriate value
@@ -49,6 +51,8 @@ Processes menu input from user
 user_input: 
 '''
 def process_menu_input(user_input):
+    if user_input is 1:
+
     return
 '''
 Process ticker input from user
